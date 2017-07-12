@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  data;
+  constructor(private appService: AppService) { }
+
+  onClick(value: string) {
+    this.appService.getData(value)
+      .subscribe(data => this.data = data)
+
+  }
+
 }
+
